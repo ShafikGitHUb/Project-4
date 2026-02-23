@@ -68,10 +68,7 @@ mainContainer.addEventListener('click', function(event){
 
     // Interview button clicked
     if(event.target.classList.contains('interview-btn')){
-        // Remove from rejectedList if present
         rejectedList = rejectedList.filter(p => p.id !== id);
-
-        // Add to interviewList if not already
         if(!interviewList.find(p=>p.id===id)){
             interviewList.push({id, plantName, latinName, light, status:'Interview', notes});
         }
@@ -84,14 +81,10 @@ mainContainer.addEventListener('click', function(event){
 
     // Rejected button clicked
     if(event.target.classList.contains('rejected-btn')){
-        // Remove from interviewList if present
         interviewList = interviewList.filter(p => p.id !== id);
-
-        // Add to rejectedList if not already
         if(!rejectedList.find(p=>p.id===id)){
             rejectedList.push({id, plantName, latinName, light, status:'Rejected', notes});
         }
-
         statusText.innerText = "Rejected";
         calculateCount();
         if(!allCardSection.classList.contains('hidden')) return;
