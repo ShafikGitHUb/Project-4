@@ -79,7 +79,6 @@ mainContainer.addEventListener('click', function(event){
         renderFilter(interviewList);
     }
 
-    // Rejected button clicked
     if(event.target.classList.contains('rejected-btn')){
         interviewList = interviewList.filter(p => p.id !== id);
         if(!rejectedList.find(p=>p.id===id)){
@@ -91,7 +90,6 @@ mainContainer.addEventListener('click', function(event){
         renderFilter(rejectedList);
     }
 
-    // Delete clicked
     if(event.target.tagName==="IMG"){
         interviewList = interviewList.filter(p => p.id !== id);
         rejectedList = rejectedList.filter(p => p.id !== id);
