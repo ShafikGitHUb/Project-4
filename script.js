@@ -106,7 +106,7 @@ function renderFilter(list){
     list.forEach(item => {
         const div = document.createElement('div');
         div.className = 'card flex justify-between p-8 bg-white shadow';
-        div.setAttribute('data-id', item.id); // important!
+        div.setAttribute('data-id', item.id); 
         div.innerHTML = `
             <div class="left-card space-y-2">
                 <div>
