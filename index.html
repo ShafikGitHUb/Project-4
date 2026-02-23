@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Application Tracker</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<style>
+  *{ font-family: "Inter", sans-serif; }
+  img { cursor: pointer; }
+</style>
+</head>
+<body class="bg-gray-100">
+
+<header class="w-11/12 mx-auto py-3">
+  <h1 class="text-2xl font-bold">Job Application Tracker</h1>
+  <div class="grid grid-cols-3 gap-4 mt-3">
+      <div class="bg-white shadow p-4">
+          <p>Total</p>
+          <p id="total">0</p>
+      </div>
+      <div class="bg-white shadow p-4">
+          <p>Interview</p>
+          <p id="interviewCount">0</p>
+      </div>
+      <div class="bg-white shadow p-4">
+          <p>Rejected</p>
+          <p id="rejectedCount">0</p>
+      </div>
+  </div>
+</header>
+
+<hr class="my-5 w-11/12 mx-auto opacity-10">
+
+<main class="w-11/12 mx-auto">
+  <div class="flex justify-between pb-3">
+      <h1>Available Jobs</h1>
+      <p id="availableCount">8 Jobs</p>
+  </div>
+
+  <div class="space-x-2 mb-3">
+      <button onclick="toggleStyle('all-filter-btn')" id="all-filter-btn" class="text-white px-5 py-2" style="background-color:#3B82F6;">All</button>
+      <button onclick="toggleStyle('interview-filter-btn')" id="interview-filter-btn" class="bg-gray-300 text-black px-5 py-2">Interview</button>
+      <button onclick="toggleStyle('rejected-filter-btn')" id="rejected-filter-btn" class="bg-gray-300 text-black px-5 py-2">Rejected</button>
+  </div>
+
+  <section id="filter-section" class="hidden"></section>
+  <section id="all-card" class="mt-6 space-y-5">
+    <!-- 8 Cards with unique data-id -->
+    <div class="card flex justify-between p-8 bg-white shadow" data-id="1">
+      <div class="left-card space-y-2">
+          <div>
+              <p class="plantName text-[20px] font-bold">Mobile First Corp</p>
+              <p class="latinName text-[#64748B]">React Native Developer</p>
+          </div>
+          <div class="flex gap-2">
+              <p class="light text-[#64748B]">Remote • Full-time • $130,000 - $175,000</p>
+          </div>
+          <div>
+              <p class="status">Not Applied</p>
+              <p class="notes text-[#64748B]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+          </div>
+          <div class="flex gap-[15px]">
+              <button class="interview-btn text-[#10B981] border px-4 py-2">Interview</button>
+              <button class="rejected-btn text-[#EF4444] border px-4 py-2">Rejected</button>
+          </div>
+      </div>
+      <div class="right-card">
+          <img src="delete.png" alt="">
+      </div>
+    </div>
+    <!-- Repeat same card 7 more times with data-id 2,3,...,8 -->
+    <div class="card flex justify-between p-8 bg-white shadow" data-id="2">
+      <div class="left-card space-y-2">
+          <div>
+              <p class="plantName text-[20px] font-bold">Mobile First Corp</p>
+              <p class="latinName text-[#64748B]">React Native Developer</p>
+          </div>
+          <div class="flex gap-2">
+              <p class="light text-[#64748B]">Remote • Full-time • $130,000 - $175,000</p>
+          </div>
+          <div>
+              <p class="status">Not Applied</p>
+              <p class="notes text-[#64748B]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+          </div>
+          <div class="flex gap-[15px]">
+              <button class="interview-btn text-[#10B981] border px-4 py-2">Interview</button>
+              <button class="rejected-btn text-[#EF4444] border px-4 py-2">Rejected</button>
+          </div>
+      </div>
+      <div class="right-card">
+          <img src="delete.png" alt="">
+      </div>
+    </div>
+    <!-- Continue with data-id="3" ... data-id="8" -->
+    <div class="card flex justify-between p-8 bg-white shadow" data-id="3">
+      <div class="left-card space-y-2">
+          <div>
+              <p class="plantName text-[20px] font-bold">Mobile First Corp</p>
+              <p class="latinName text-[#64748B]">React Native Developer</p>
+          </div>
+          <div class="flex gap-2">
+              <p class="light text-[#64748B]">Remote • Full-time • $130,000 - $175,000</p>
+          </div>
+          <div>
+              <p class="status">Not Applied</p>
+              <p class="notes text-[#64748B]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+          </div>
+          <div class="flex gap-[15px]">
+              <button class="interview-btn text-[#10B981] border px-4 py-2">Interview</button>
+              <button class="rejected-btn text-[#EF4444] border px-4 py-2">Rejected</button>
+          </div>
+      </div>
+      <div class="right-card">
+          <img src="delete.png" alt="">
+      </div>
+    </div>
+
+    <div class="card flex justify-between p-8 bg-white shadow" data-id="4">
+      <div class="left-card space-y-2">
+          <div>
+              <p class="plantName text-[20px] font-bold">Mobile First Corp</p>
+              <p class="latinName text-[#64748B]">React Native Developer</p>
+          </div>
+          <div class="flex gap-2">
+              <p class="light text-[#64748B]">Remote • Full-time • $130,000 - $175,000</p>
+          </div>
+          <div>
+              <p class="status">Not Applied</p>
+              <p class="notes text-[#64748B]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+          </div>
+          <div class="flex gap-[15px]">
+              <button class="interview-btn text-[#10B981] border px-4 py-2">Interview</button>
+              <button class="rejected-btn text-[#EF4444] border px-4 py-2">Rejected</button>
+          </div>
+      </div>
+      <div class="right-card">
+          <img src="delete.png" alt="">
+      </div>
+    </div>
+
+    <div class="card flex justify-between p-8 bg-white shadow" data-id="5">
+      <div class="left-card space-y-2">
+          <div>
+              <p class="plantName text-[20px] font-bold">Mobile First Corp</p>
+              <p class="latinName text-[#64748B]">React Native Developer</p>
+          </div>
+          <div class="flex gap-2">
+              <p class="light text-[#64748B]">Remote • Full-time • $130,000 - $175,000</p>
+          </div>
+          <div>
+              <p class="status">Not Applied</p>
+              <p class="notes text-[#64748B]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+          </div>
+          <div class="flex gap-[15px]">
+              <button class="interview-btn text-[#10B981] border px-4 py-2">Interview</button>
+              <button class="rejected-btn text-[#EF4444] border px-4 py-2">Rejected</button>
+          </div>
+      </div>
+      <div class="right-card">
+          <img src="delete.png" alt="">
+      </div>
+    </div>
+
+    <div class="card flex justify-between p-8 bg-white shadow" data-id="6">
+      <div class="left-card space-y-2">
+          <div>
+              <p class="plantName text-[20px] font-bold">Mobile First Corp</p>
+              <p class="latinName text-[#64748B]">React Native Developer</p>
+          </div>
+          <div class="flex gap-2">
+              <p class="light text-[#64748B]">Remote • Full-time • $130,000 - $175,000</p>
+          </div>
+          <div>
+              <p class="status">Not Applied</p>
+              <p class="notes text-[#64748B]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+          </div>
+          <div class="flex gap-[15px]">
+              <button class="interview-btn text-[#10B981] border px-4 py-2">Interview</button>
+              <button class="rejected-btn text-[#EF4444] border px-4 py-2">Rejected</button>
+          </div>
+      </div>
+      <div class="right-card">
+          <img src="delete.png" alt="">
+      </div>
+    </div>
+
+    <div class="card flex justify-between p-8 bg-white shadow" data-id="7">
+      <div class="left-card space-y-2">
+          <div>
+              <p class="plantName text-[20px] font-bold">Mobile First Corp</p>
+              <p class="latinName text-[#64748B]">React Native Developer</p>
+          </div>
+          <div class="flex gap-2">
+              <p class="light text-[#64748B]">Remote • Full-time • $130,000 - $175,000</p>
+          </div>
+          <div>
+              <p class="status">Not Applied</p>
+              <p class="notes text-[#64748B]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+          </div>
+          <div class="flex gap-[15px]">
+              <button class="interview-btn text-[#10B981] border px-4 py-2">Interview</button>
+              <button class="rejected-btn text-[#EF4444] border px-4 py-2">Rejected</button>
+          </div>
+      </div>
+      <div class="right-card">
+          <img src="delete.png" alt="">
+      </div>
+    </div>
+
+    <div class="card flex justify-between p-8 bg-white shadow" data-id="8">
+      <div class="left-card space-y-2">
+          <div>
+              <p class="plantName text-[20px] font-bold">Mobile First Corp</p>
+              <p class="latinName text-[#64748B]">React Native Developer</p>
+          </div>
+          <div class="flex gap-2">
+              <p class="light text-[#64748B]">Remote • Full-time • $130,000 - $175,000</p>
+          </div>
+          <div>
+              <p class="status">Not Applied</p>
+              <p class="notes text-[#64748B]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+          </div>
+          <div class="flex gap-[15px]">
+              <button class="interview-btn text-[#10B981] border px-4 py-2">Interview</button>
+              <button class="rejected-btn text-[#EF4444] border px-4 py-2">Rejected</button>
+          </div>
+      </div>
+      <div class="right-card">
+          <img src="delete.png" alt="">
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
